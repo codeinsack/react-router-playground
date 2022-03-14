@@ -10,7 +10,7 @@ import {
 import Nav from "./Common/Nav";
 import Products from "./Products/Products";
 import Admin from "./Admin/Admin";
-import ProductsIndex from "./ProductsIndex/ProductsIndex";
+import ProductsIndex from "./Products/ProductsIndex";
 
 const AppStyles = css`
   margin: 50px auto;
