@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { css } from "@emotion/css";
 import {
   BrowserRouter as Router,
@@ -10,6 +10,7 @@ import {
 import Nav from "./Common/Nav";
 import Products from "./Products/Products";
 import Admin from "./Admin/Admin";
+import ProtectedRoute from "./Common/ProtectedRoute";
 
 const AppStyles = css`
   margin: 50px auto;
@@ -23,6 +24,8 @@ const AppStyles = css`
 `;
 
 const App = () => {
+  const [authenticated] = useState(true);
+
   return (
     <div className={AppStyles}>
       <Router>
@@ -30,7 +33,12 @@ const App = () => {
           <Nav />
           <Routes>
             <Route path="/*" element={<Products />} />
-            <Route path="/admin" element={<Admin />} />
+            <ProtectedRoute
+              path="/admin"
+              element={<Admin />}
+              authenticated={authenticated}
+              redirectTo="/"
+            />
             <Route path="*" element={<Navigate to="/" />} />
             {/*<Route path="*" element={<div>Not Found</div>} />*/}
           </Routes>
