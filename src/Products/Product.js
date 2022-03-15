@@ -45,7 +45,7 @@ const Product = () => {
         setProduct(product);
       } catch (error) {
         console.warn(error);
-        navigate("/");
+        navigate("/", { replace: true, state: { id } });
       }
     })();
   }, [id]);
